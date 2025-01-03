@@ -37,11 +37,10 @@ def schedule_weekday_tasks():
                     schedule.every().thursday, schedule.every().friday]:
             day.at(settings['evening_time']).do(evening_task)
     if settings['pattern'] == 'both':
-        # 安排早间任务
+        # 安排早间和晚间任务
         for day in [schedule.every().monday, schedule.every().tuesday, schedule.every().wednesday,
                     schedule.every().thursday, schedule.every().friday]:
             day.at(settings['morning_time']).do(morning_task)
-        # 安排晚间任务
         for day in [schedule.every().monday, schedule.every().tuesday, schedule.every().wednesday,
                     schedule.every().thursday, schedule.every().friday]:
             day.at(settings['evening_time']).do(evening_task)
