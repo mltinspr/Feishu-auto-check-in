@@ -8,7 +8,7 @@ logger = init_logger(__name__)
 
 
 def open_feishu():
-    feishu = pg.locateOnScreen(settings['feishu_button_path'])
+    feishu = pg.locateOnScreen(settings['feishu_button_path'], confidence=0.9)
     button_feishu = pg.center(feishu)
     pg.click(button_feishu)
 
