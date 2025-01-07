@@ -1,6 +1,6 @@
 settings = {
-    'student_id': '332305020472',
-    'student_pwd': '317001',
+    'student_id': '',
+    'student_pwd': '',
     'web_url': 'http://10.168.6.10/a79.htm?wlanuserip=10.66.109.208&wlanacname=&wlanacip=10.168.6.9',
     'driver_path': r'EdgeDriver\msedgedriver.exe',
     'feishu_button_path': r'ButtonImages\leidian_feishu.png',
