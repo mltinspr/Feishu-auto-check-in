@@ -11,7 +11,7 @@ logger = init_logger(__name__)
 # 设置每天早上的任务
 def morning_task():
     logger.info("开始执行早间任务...")
-    auto_connect = AutoConnect(settings['student_id'], settings['student_pwd'])  # 请根据实际需要替换ID和密码
+    auto_connect = AutoConnect(settings['student_id'], settings['student_pwd'])
     auto_connect.connect()
     execute_operation()
     logger.info("早间任务执行完成。")

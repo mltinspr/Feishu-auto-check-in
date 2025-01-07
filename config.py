@@ -6,7 +6,7 @@ settings = {
     'feishu_button_path': r'ButtonImages\leidian_feishu.png',
     'close_button_path': r'ButtonImages\leidian_close.png',
     'execution_times': 4,
-    'morning_time': '8:50',
+    'morning_time': '08:40',
     'evening_time': '21:40',
     'pattern': 'both',  # only_morning, only_evening, both
     'log_path': r'logs\log.txt'
