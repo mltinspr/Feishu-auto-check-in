@@ -1,4 +1,5 @@
 import time
+import os
 from config import settings
 from selenium import webdriver
 from selenium.webdriver.edge.service import Service
@@ -22,6 +23,10 @@ class AutoConnect:
         #     self.driver = webdriver.Chrome(service=self.service, options=self.options)
 
     def connect(self):
+        if not settings['use_wlan']:
+            os.system(r'C:\Drcom\DrUpdateClient\DrMain.exe')
+            time.sleep(5)
+            return
         self.driver.get(self.url)
         time.sleep(1)
         student_id_input = self.driver.find_element(By.XPATH,

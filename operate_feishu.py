@@ -26,7 +26,7 @@ def execute_operation():
         time.sleep(30)
         try:
             close_feishu()
-            time.sleep(1)
+            time.sleep(5)
         except pg.ImageNotFoundException:
             logger.error("未找到关闭按钮")
             fail_times += 1
