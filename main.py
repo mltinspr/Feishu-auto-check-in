@@ -1,7 +1,7 @@
 import schedule
 import time
 from set_log import init_logger
-from config import settings
+from config import *
 from connect_to_campus_web import AutoConnect
 from operate_feishu import execute_operation
 
@@ -11,7 +11,7 @@ logger = init_logger(__name__)
 # 设置每天早上的任务
 def morning_task():
     logger.info("开始执行早间任务...")
-    auto_connect = AutoConnect(settings['student_id'], settings['student_pwd'])
+    auto_connect = AutoConnect(STUDENT_ID, STUDENT_PASSWORD)
     auto_connect.connect()
     execute_operation()
     logger.info("早间任务执行完成。")
@@ -26,24 +26,24 @@ def evening_task():
 
 # 安排任务
 def schedule_weekday_tasks():
-    if settings['pattern'] == 'only_morning':
+    if PATTERN == 'only_morning':
         # 安排早间任务
         for day in [schedule.every().monday, schedule.every().tuesday, schedule.every().wednesday,
                     schedule.every().thursday, schedule.every().friday]:
-            day.at(settings['morning_time']).do(morning_task)
-    if settings['pattern'] == 'only_evening':
+            day.at(MORNING_TIME).do(morning_task)
+    if PATTERN == 'only_evening':
         # 安排晚间任务
         for day in [schedule.every().monday, schedule.every().tuesday, schedule.every().wednesday,
                     schedule.every().thursday, schedule.every().friday]:
-            day.at(settings['evening_time']).do(evening_task)
-    if settings['pattern'] == 'both':
+            day.at(EVENING_TIME).do(evening_task)
+    if PATTERN == 'both':
         # 安排早间和晚间任务
         for day in [schedule.every().monday, schedule.every().tuesday, schedule.every().wednesday,
                     schedule.every().thursday, schedule.every().friday]:
-            day.at(settings['morning_time']).do(morning_task)
+            day.at(MORNING_TIME).do(morning_task)
         for day in [schedule.every().monday, schedule.every().tuesday, schedule.every().wednesday,
                     schedule.every().thursday, schedule.every().friday]:
-            day.at(settings['evening_time']).do(evening_task)
+            day.at(EVENING_TIME).do(evening_task)
 
 
 # 安排任务

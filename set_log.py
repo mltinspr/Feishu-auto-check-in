@@ -1,5 +1,5 @@
 import logging
-from config import settings
+from config import *
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
@@ -7,7 +7,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(level
 def init_logger(logger_name):
     logger = logging.getLogger(logger_name)
 
-    handler = logging.FileHandler(settings['log_path'])
+    handler = logging.FileHandler(LOG_PATH)
     handler.setLevel(logging.INFO)
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     handler.setFormatter(formatter)

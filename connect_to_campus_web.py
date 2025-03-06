@@ -1,6 +1,6 @@
 import time
 import os
-from config import settings
+from config import *
 from selenium import webdriver
 from selenium.webdriver.edge.service import Service
 from selenium.webdriver.common.by import By
@@ -9,10 +9,10 @@ from selenium.webdriver.support.select import Select
 
 class AutoConnect:
     def __init__(self, id, pwd):
-        self.url = settings['web_url']
+        self.url = URL
         self.student_id = id
         self.student_pwd = pwd
-        self.driver_path = settings['driver_path']
+        self.driver_path = DRIVER_PATH
         self.service = Service(executable_path=self.driver_path)
         self.options = webdriver.EdgeOptions()
         self.driver = webdriver.Edge(service=self.service, options=self.options)
@@ -23,12 +23,11 @@ class AutoConnect:
         #     self.driver = webdriver.Chrome(service=self.service, options=self.options)
 
     def connect(self):
-        if not settings['use_wlan']:
+        if not USE_WLAN:
             os.system(r'C:\Drcom\DrUpdateClient\DrMain.exe')
             time.sleep(5)
             return
         self.driver.get(self.url)
-        time.sleep(1)
         student_id_input = self.driver.find_element(By.XPATH,
                                                     '//div[@class="edit_loginBox normal_box  random loginuse loginuse_pc ui-resizable-autohide"]/form//input[@name="DDDDD"]')
         select = Select(self.driver.find_element(By.XPATH,
@@ -47,4 +46,4 @@ class AutoConnect:
 
 
 if __name__ == '__main__':
-    AutoConnect(settings['student_id'], settings['student_pwd']).connect()
+    AutoConnect(STUDENT_ID, STUDENT_PASSWORD).connect()
